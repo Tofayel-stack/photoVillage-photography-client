@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 import About from '../pages/About/About';
 import Service from '../pages/Service';
 import Blog from '../pages/Blog';
-import Contact from '../pages/Contact';
+import Contact from '../pages/Contact/Contact';
 import Plans from '../pages/plans/Plans';
 
 
