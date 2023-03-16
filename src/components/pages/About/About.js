@@ -7,7 +7,7 @@ import './About.css'
 const About = () => {
     return (
         <div id='about' className=' py-36 bg-zinc-800'>
-            <div className='flex container m-auto'>
+            <div className='lg:flex container m-auto'>
                 <div className='w-full relative'>
                     
                     <img className='w-1/3 rounded-lg z-40' src={img1} alt="pic" />

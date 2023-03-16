@@ -5,7 +5,7 @@ import { GiCheckMark } from 'react-icons/gi';
 const PlansCard = ({cardtext}) => {
     return (
         <div>
-               <div className="card rounded-none mx-6 w-96 bg-stone-800 shadow-xl hover:translate-y-1.5 transition duration-500 hover:border-b-2 border-red-600">
+               <div className="card rounded-none lg:mx-6 w-96 bg-stone-800 shadow-xl hover:translate-y-1.5 transition duration-500 hover:border-b-2 border-red-600">
                 
                 <div className="p-12 text-white text-start">
                     <h2 className="card-title mb-8">{cardtext.title}</h2>

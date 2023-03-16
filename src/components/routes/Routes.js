@@ -3,10 +3,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from '../layout/Main';
 import Home from '../pages/Home';
 import About from '../pages/About/About';
-import Service from '../pages/Service';
 import Blog from '../pages/blog/Blog';
 import Contact from '../pages/Contact/Contact';
 import Plans from '../pages/plans/Plans';
+import Services from '../pages/services/Services';
+import ServiceDetails from '../pages/ServiceDetails/ServiceDetails';
 
 
 const Routes = () => {
@@ -24,8 +25,17 @@ const Routes = () => {
               
                 {
                     path:'/service',
-                   element:<Service></Service>
+                   element:<Services></Services>,
+                   loader:()=>fetch('http://localhost:5000/services')
+
                 },
+                {
+                    path:'/servDetails/:id',
+                   element:<ServiceDetails></ServiceDetails>,
+                    loader:({params})=>fetch(`http://localhost:5000//servDetails/${params.id}`)
+                },
+              
+              
                 {
                     path:'/blog',
                    element:<Blog></Blog>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ClintCard = ({clintSays}) => {
-    console.log(clintSays);
+    // console.log(clintSays);
     return (
         <div className='bg-slate-800 text-white px-4'>
             <div className="avatar offline">
