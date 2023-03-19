@@ -32,7 +32,7 @@ const Routes = () => {
                 {
                     path:'/servDetails/:id',
                    element:<ServiceDetails></ServiceDetails>,
-                    loader:({params})=>fetch(`http://localhost:5000//servDetails/${params.id}`)
+                   loader:({params})=>fetch(`http://localhost:5000/servDetails/${params.id}`)
                 },
               
               
