@@ -5,35 +5,46 @@ import { BsStarHalf } from 'react-icons/bs';
 import ReviewCard from './ReviewCard';
 
 
-
 // rating 
-
 import ReactStars from "react-rating-stars-component";
 import { useState } from 'react';
+
+// toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
  
-
-
-
-
- 
-
-
-
 
 
 
 
 const ServiceDetails = () => {
+
+// main servidce data load here
     const singleServiceDetailsData = useLoaderData()
-    // console.log(singleServiceDetailsData);
     const [rating,setRating] = useState()
 
+    // active clear button
     const handleCancelBtn=()=>{
         let review = document.getElementById('inputfield');
         review.value = ''
     }
+
+    // rating function
     const ratingChanged = (newRating) => {setRating(newRating)};
 
+    // toast
+    const toastifyAlert = () => toast("Review successfully posted",{
+        position: "top-center",
+        autoClose: 300,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    // handle submit and POST method create 
     const handleSubmit = (event) => {
         event.preventDefault()
 
@@ -48,18 +59,36 @@ const ServiceDetails = () => {
             reviewDetails,
             rating
         }
-        //  console.log(reviewObj);
-
-
+   
             fetch('http://localhost:5000/serviceReview',{
                 method:'POST',
                 headers:{"content-type":"application/json"},
                 body:JSON.stringify(reviewObj)
             })
             .then(res => res.json())
-            .then(data => console.log(data))
-
+            .then(data => {
+                console.log(data)
+                if(data.acknowledged){
+                    toastifyAlert()
+                    event.target.reset()
+                }
+            })
+            .catch(error=>{
+                console.error(error)
+                alert('you got an error')
+            })
+            
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,7 +123,10 @@ const ServiceDetails = () => {
 
 
                     {/* give Your rating  */}
+                    <div className='flex mt-4'>
+                    <span className='mr-4 text-amber-500'>give your rating(out of 5)</span> 
                     <ReactStars
+                    classNames='inline'
                             count={5}
                             onChange={ratingChanged}
                             size={24}
@@ -103,13 +135,15 @@ const ServiceDetails = () => {
                             halfIcon={<i className="fa fa-star-half-alt"></i>}
                             fullIcon={<i className="fa fa-star"></i>}
                             activeColor="#ffd700"
-                        />,
+                            
+                        /> 
+                    </div>
 
 
                     <form action="" onSubmit={handleSubmit}>
-                            <input name='reviewerName' type="text" placeholder="Your Name" className="input input-bordered w-3/12" />
-                            <input name='reviewTitle' type="text" placeholder="Write review Title" className="input input-bordered w-3/4" />
-                            <textarea name='reviewDetailsField' id='inputfield' className="border-2 rounded textarea-lg w-full mt-3" placeholder="write your detail review here ."></textarea>
+                            <input name='reviewerName' type="text" placeholder="Your Name" className="input input-bordered w-3/12" required />
+                            <input name='reviewTitle' type="text" placeholder="Write review Title" className="input input-bordered w-3/4"required />
+                            <textarea name='reviewDetailsField' id='inputfield' className="border-2 rounded textarea-lg w-full mt-3" placeholder="write your detail review here" required></textarea>
 
                             <div className='text-right'>
                             <p onClick={handleCancelBtn} className=' btn bg-white text-black mr-4'>Clear</p>
@@ -117,7 +151,9 @@ const ServiceDetails = () => {
                             </div>
                     </form>
                 </div>
+                <ToastContainer />
         </div>
+       
     );
 };
 
