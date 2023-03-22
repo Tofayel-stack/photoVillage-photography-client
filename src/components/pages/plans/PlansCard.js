@@ -2,7 +2,21 @@ import React from 'react';
 import './PlanCardStyle.css';
 import { GiCheckMark } from 'react-icons/gi';
 
-const PlansCard = ({cardtext}) => {
+const PlansCard = ({cardtext,setModalInfo}) => {
+
+
+
+
+    const modalFun =()=>{
+      return  setModalInfo(cardtext)
+    }
+
+
+
+
+
+
+
     return (
         <div>
                <div className="card rounded-none lg:mx-6 w-96 bg-stone-800 shadow-xl hover:translate-y-1.5 transition duration-500 hover:border-b-2 border-red-600">
@@ -27,11 +41,12 @@ const PlansCard = ({cardtext}) => {
                         <nav>
                             <ul>
                                 <li>
-                                <button>Purchase Now</button>
+                                <button onClick={modalFun}  ><label htmlFor="my-modal" className='px-12 py-8'>Purchase Now</label></button>
                                 <span></span><span></span><span></span><span></span>
                                 </li>
                             </ul>
                         </nav>
+                        
                 </div>
                 </div>
         </div>

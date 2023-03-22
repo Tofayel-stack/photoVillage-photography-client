@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BannerTitle = () => {
     return (
@@ -9,6 +10,9 @@ const BannerTitle = () => {
         <p className='text-xl'>
         Our Photographer has been a trusted for over 20 years. <br /> And you can make your memeri with us.
         </p>
+
+
+        <Link className='btn mt-4' to='/plans'>Book Now</Link>
       </div>
     );
 };

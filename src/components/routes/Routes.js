@@ -8,6 +8,8 @@ import Contact from '../pages/Contact/Contact';
 import Plans from '../pages/plans/Plans';
 import Services from '../pages/services/Services';
 import ServiceDetails from '../pages/ServiceDetails/ServiceDetails';
+import SignIn from '../pages/SignIn/SignIn';
+import SignUp from '../pages/registresion/SignUp';
 
 
 const Routes = () => {
@@ -21,7 +23,16 @@ const Routes = () => {
                     path:'/',
                     element:<Home></Home>
                 },
-             
+                   
+                {
+                    path:'/signIn',
+                    element:<SignIn></SignIn>
+                },
+                {
+                    path:'/signup',
+                    element:<SignUp></SignUp>
+                },
+
               
                 {
                     path:'/service',
@@ -55,7 +66,16 @@ const Routes = () => {
            
             ]
 
-        }
+        },
+
+
+        {
+            path:'*',
+            element:<div>hi . this is 404 !!!</div>
+        },
+
+
+
     ])
     return (
         <RouterProvider router={router}></RouterProvider>

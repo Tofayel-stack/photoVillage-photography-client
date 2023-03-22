@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PlansCard from './PlansCard';
 
 const Plans = () => {
 
+const [modalInfo,setModalInfo] = useState()
 
     const cardData = [
         {   
@@ -49,15 +50,25 @@ const Plans = () => {
                 cardData.map(cardtext => <PlansCard
                      cardtext={cardtext}
                      key={cardtext._id}
+                     setModalInfo= {setModalInfo}
                      ></PlansCard> )
             }
-
-
-           
-
-
-
            </div>
+
+
+
+                {/* this section is for modal */}
+
+                <input type="checkbox" id="my-modal" className="modal-toggle" />
+                        <div className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Congratulations as a paid member 	&#128578;</h3>
+                            <p className="py-4">You've been selected for <span className='text-orange-400'>{modalInfo?.title}</span> of subscription to get our services price is <span className='text-orange-400'>$ {modalInfo?.price}</span> we are working on that . will provide you updates very soon  !</p>
+                            <div className="modal-action">
+                            <label htmlFor="my-modal" className="btn">Yaap</label>
+                            </div>
+                        </div>
+                        </div>
 
         </div>
     );

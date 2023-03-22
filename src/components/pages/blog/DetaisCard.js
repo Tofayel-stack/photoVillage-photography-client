@@ -2,7 +2,7 @@ import React from 'react';
 
 const DetaisCard = ({cardData}) => {
 
-    console.log(cardData);
+    // console.log(cardData);
     const {pic,ques,details}=cardData;
     return (
         <div className='bg-zinc-800 m-4 text-white p-8 duration-1000 hover:scale-105 hover:border-4 '>

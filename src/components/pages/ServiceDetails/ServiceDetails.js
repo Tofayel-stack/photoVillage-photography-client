@@ -7,11 +7,12 @@ import ReviewCard from './ReviewCard';
 
 // rating 
 import ReactStars from "react-rating-stars-component";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
  
 
@@ -44,17 +45,35 @@ const ServiceDetails = () => {
         progress: undefined,
         theme: "dark",
         });
+
+
+        // load previous review from databse to show in UI
+        const [reviews,setReviews] = useState()
+        useEffect(()=>{
+            fetch(`http://localhost:5000/serviceReview/${singleServiceDetailsData._id}`)
+            .then(res=> res.json())
+            .then(data => setReviews(data))
+        },[singleServiceDetailsData._id])
+
+
+
+
+
+
+
     // handle submit and POST method create 
     const handleSubmit = (event) => {
         event.preventDefault()
 
         const reviewerName = event.target.reviewerName.value;
         const reviewTitle = event.target.reviewTitle.value;
+        const reviewerEmail = event.target.reviewerEmail.value;
         const reviewDetails = event.target.reviewDetailsField.value;
        
         const reviewObj = {
             serviceId: singleServiceDetailsData._id ,
             reviewerName,
+            reviewerEmail,
             reviewTitle,
             reviewDetails,
             rating
@@ -76,13 +95,8 @@ const ServiceDetails = () => {
             .catch(error=>{
                 console.error(error)
                 alert('you got an error')
-            })
-            
+            })     
     }
-
-
-
-
 
 
 
@@ -115,11 +129,20 @@ const ServiceDetails = () => {
 
                 {/* show review here */}
 
-                <ReviewCard></ReviewCard>
+                <h1 className='text-xl mt-12 text-orange-400 bg-gradient-to-r from-gray-400 via-zinc-500 to-gray-400'>People says about our services</h1>
+                {
+                    reviews?.map( review => <ReviewCard
+                        review = {review}
+                        key = {review._id}
+                    >  
+                    </ReviewCard>
+                    )
+                }
+               
 
                 {/*submit review section */}
                 <div className='m-10'>
-                    <span className='text-left block font-bold'>Write Your Review</span>
+                    <span className='text-left block font-bold text-2xl underline underline-offset-4'>Write Your Own Review</span>
 
 
                     {/* give Your rating  */}
@@ -142,7 +165,11 @@ const ServiceDetails = () => {
 
                     <form action="" onSubmit={handleSubmit}>
                             <input name='reviewerName' type="text" placeholder="Your Name" className="input input-bordered w-3/12" required />
-                            <input name='reviewTitle' type="text" placeholder="Write review Title" className="input input-bordered w-3/4"required />
+                            <input name='reviewerEmail' type="text" placeholder="email" className="input input-bordered w-3/12" defaultValue='hi' required readOnly/>
+
+                            <input name='reviewTitle' type="text" placeholder="Write review Title" className="input input-bordered w-2/4"required />
+
+                           
                             <textarea name='reviewDetailsField' id='inputfield' className="border-2 rounded textarea-lg w-full mt-3" placeholder="write your detail review here" required></textarea>
 
                             <div className='text-right'>

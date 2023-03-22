@@ -1,8 +1,25 @@
-import React from 'react';
+
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import camLogo from '../../Assets/CamLogo.jpg'
-
+import { AuthContext } from '../../contextAPI/Context';
 const Navbar = () => {
+
+    const {logOutUser,user} = useContext(AuthContext)
+
+
+
+
+
+    const handleSignOut = () =>{
+        logOutUser()
+        .then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
+
     return (
        
         <div className="navbar bg-zinc-900 text-white sticky top-0 z-50">
@@ -51,7 +68,16 @@ const Navbar = () => {
     
                         
                 <div className="navbar-end">
-                    <a href='/#' className="btn">Book Now</a>
+                    {
+
+                        user? 
+                        
+                        <span onClick={handleSignOut} className="transition duration-150 cursor-pointer hover:underline underline-offset-4 hover:text-red-500 text-orange-500">Sign Out </span> 
+                        : 
+                        <Link className='animate-pulse transition duration-150 cursor-pointer hover:underline underline-offset-4 hover:text-red-500 text-orange-500 text-xl' to='/signIn'>Sign In</Link>
+                        
+                    }
+                    <span> {user?.email}</span>
                 </div>
     
                 </div>
