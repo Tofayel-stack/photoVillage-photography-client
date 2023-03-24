@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contextAPI/Context';
 
-
+// toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,7 +31,7 @@ const SignUp = () => {
     const handleSubmit = event => {
         event.preventDefault()
         const form = event.target;
-        const fName = form.fName.value + form.lName.value;
+        const displayName = form.fName.value + form.lName.value;
         const userEmail = form.userEmail.value;
         const userPassword = form.userPassword.value;
 

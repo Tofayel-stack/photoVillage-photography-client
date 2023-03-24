@@ -58,6 +58,10 @@ const Navbar = () => {
                             <li><Link to='/plans' className='hover:underline underline-offset-4 hover:text-red-500'>Plans</Link></li>
                             <li><Link to='/blog' className='hover:underline underline-offset-4 hover:text-red-500'>Blog</Link></li>
                             <li><Link to='/contact' className='hover:underline underline-offset-4 hover:text-red-500'>Contact</Link></li>
+
+                            {
+                                user? <li><Link to='/myreview' className='hover:underline underline-offset-4 hover:text-red-500'>My Review</Link></li> : ''
+                            }
                         
     
                         </ul>

@@ -12,6 +12,8 @@ import { useEffect, useState } from 'react';
 // toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contextAPI/Context';
 
 
  
@@ -24,6 +26,7 @@ const ServiceDetails = () => {
 // main servidce data load here
     const singleServiceDetailsData = useLoaderData()
     const [rating,setRating] = useState()
+    const {user} = useContext(AuthContext)
 
     // active clear button
     const handleCancelBtn=()=>{
@@ -165,7 +168,7 @@ const ServiceDetails = () => {
 
                     <form action="" onSubmit={handleSubmit}>
                             <input name='reviewerName' type="text" placeholder="Your Name" className="input input-bordered w-3/12" required />
-                            <input name='reviewerEmail' type="text" placeholder="email" className="input input-bordered w-3/12" defaultValue='hi' required readOnly/>
+                            <input name='reviewerEmail' type="text" placeholder="email" className="input input-bordered w-3/12" defaultValue={user?.email} required readOnly/>
 
                             <input name='reviewTitle' type="text" placeholder="Write review Title" className="input input-bordered w-2/4"required />
 

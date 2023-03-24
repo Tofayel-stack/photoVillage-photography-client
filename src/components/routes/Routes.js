@@ -10,6 +10,8 @@ import Services from '../pages/services/Services';
 import ServiceDetails from '../pages/ServiceDetails/ServiceDetails';
 import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/registresion/SignUp';
+import Error404 from '../component/Error404/Error404';
+import MyReview from '../pages/myReview/MyReview';
 
 
 const Routes = () => {
@@ -46,6 +48,11 @@ const Routes = () => {
                    loader:({params})=>fetch(`http://localhost:5000/servDetails/${params.id}`)
                 },
               
+                {
+                    path:'/myreview',
+                    element:<MyReview></MyReview>
+                    
+                },
               
                 {
                     path:'/blog',
@@ -71,7 +78,7 @@ const Routes = () => {
 
         {
             path:'*',
-            element:<div>hi . this is 404 !!!</div>
+            element:<Error404></Error404>
         },
 
 
