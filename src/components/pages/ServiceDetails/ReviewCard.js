@@ -3,10 +3,28 @@ import React from 'react';
 import { BsStarFill } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 
+
+    // import AOS
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';
+    import { useEffect } from 'react';
+    
+
+
 const ReviewCard = ({review}) => {
     // console.log(review)
+    useEffect(()=>{
+        AOS.init({
+            
+            duration: 1000,
+        })
+    },[])
+
+
+
+
     return (
-        <div className='p-4 bordered bg-zinc-200 m-4 rounded text-start'>
+        <div className='p-4 bordered bg-zinc-200 m-4 rounded text-start' data-aos='flip-down'>
             <span className='font-extrabold text-lg'>{review.reviewTitle}</span>
             <p className='mb-4'>{review.reviewDetails}</p>
 

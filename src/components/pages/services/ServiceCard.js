@@ -3,11 +3,27 @@ import { BsStarFill } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
+// import AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
+
+
 const ServiceCard = ({serviceData}) => {
     //  console.log(serviceData._id);
+    useEffect(()=>{
+        AOS.init({
+            
+            duration: 1000,
+        })
+    },[])
+
+
+
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl m-4">
+            <div className="card w-96 bg-base-100 shadow-xl m-4" data-aos="zoom-in">
                 <figure className='h-72'><img className='object-cover h-80 w-96' src={serviceData.img} alt="Shoes" srcSet=""/></figure>
                 
                 <div className="card-body ">

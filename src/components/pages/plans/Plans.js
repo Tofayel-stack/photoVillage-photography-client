@@ -14,7 +14,8 @@ const [modalInfo,setModalInfo] = useState()
             imageCount:'10',
             storage:'Online Gallery',
             photographer:'1',
-            _id:'01'
+            _id:'01',
+            animationDelay:'50'
         },
         {
             title:'Premium Package',
@@ -23,7 +24,8 @@ const [modalInfo,setModalInfo] = useState()
             imageCount:'20',
             storage:'Online Gallery',
             photographer:'2',
-            _id:'02'
+            _id:'02',
+            animationDelay:'500'
         },
         {
             title:'Professional Package',
@@ -32,7 +34,8 @@ const [modalInfo,setModalInfo] = useState()
             imageCount:'50',
             storage:'Online Gallery',
             photographer:'5',
-            _id:'03'
+            _id:'03',
+            animationDelay:'1000'
         },
     ]
     return (

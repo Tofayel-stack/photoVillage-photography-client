@@ -6,8 +6,16 @@ import MyReviewCard from './MyReviewCard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// confirem box 
+import { confirm } from "react-confirm-box";
+const options = {
+    labels: {
+      confirmable: "Confirm",
+      cancellable: "Cancel"
+    }
+  }
 
-
+  //end confirm
 
 
 const MyReview = () => {
@@ -40,7 +48,11 @@ const MyReview = () => {
 
 
     // delete oparation connected to mongodb
-    const handleDltReview = (reviewID) => {
+    const handleDltReview =async (reviewID) => {
+
+      const deleteConfirmed =await confirm("Please confirm deleting ...", options);
+
+      if (deleteConfirmed) {
 
             fetch(`http://localhost:5000/myreview/${reviewID}`,{
                 method:'DELETE',
@@ -50,13 +62,18 @@ const MyReview = () => {
             .then(data =>{
                 if(data.deletedCount !== 0){
                     return toastifyAlert()
+
                 }
             })
+
+
+      }
              
     }
 
     const handleEditReview = ()=>{
         alert('coming soon')
+        
     }
 
 

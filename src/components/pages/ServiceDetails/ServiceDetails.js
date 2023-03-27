@@ -130,8 +130,10 @@ const ServiceDetails = () => {
                     </div>
                 </div>
 
-                {/* show review here */}
 
+
+
+                {/* show review here */}
                 <h1 className='text-xl mt-12 text-orange-400 bg-gradient-to-r from-gray-400 via-zinc-500 to-gray-400'>People says about our services</h1>
                 {
                     reviews?.map( review => <ReviewCard

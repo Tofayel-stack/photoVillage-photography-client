@@ -4,6 +4,8 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import ServiceCard from './ServiceCard';
 
+
+
 const ServiceInHome = () => {
     const [services,setServices] = useState()
     useEffect(()=>{
@@ -12,7 +14,7 @@ const ServiceInHome = () => {
         .then(data => setServices(data))
            
     },[])
-
+  
 
     return (
       
@@ -23,6 +25,7 @@ const ServiceInHome = () => {
             {
              services?.map(service =><ServiceCard
                 serviceData={service}
+                key={service._id}
              ></ServiceCard>
              )
             }

@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import img1 from '../../../Assets/about/about1.jpg';
 import img2 from '../../../Assets/about/about2.jpg';
 import spinnerImg from '../../../Assets/about/aboutSpinner.png';
 import './About.css'
 
+
+// import AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+//aos
 const About = () => {
+    useEffect(()=>{
+        AOS.init({
+            duration: 1000,
+            easing: 'ease',
+        })
+    },[])
+
+    
     return (
         <div id='about' className=' py-36 bg-zinc-800'>
             <div className='lg:flex container m-auto'>
-                <div className='w-full relative'>
+                <div className='w-full relative' data-aos="fade-right" >
                     
                     <img className='w-1/3 rounded-lg z-40' src={img1} alt="pic" />
-                    <img className='w-1/3 rounded-lg absolute left-64 top-28 z-10' src={img2} 
+                    <img className='w-1/3 rounded-lg absolute left-64 top-28 z-10'src={img2} 
                     alt="pic" />
                     <img  className='customeAnimate w-2/4 absolute left-64 bottom-12 z-0' src={spinnerImg} alt="spinnerPic" />
                 </div>
