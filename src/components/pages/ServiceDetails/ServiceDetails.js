@@ -68,6 +68,9 @@ const ServiceDetails = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
+
+        let date = new Date().toLocaleDateString();
+        let time = new Date().toLocaleTimeString();
         const reviewerName = event.target.reviewerName.value;
         const reviewTitle = event.target.reviewTitle.value;
         const reviewerEmail = event.target.reviewerEmail.value;
@@ -79,7 +82,9 @@ const ServiceDetails = () => {
             reviewerEmail,
             reviewTitle,
             reviewDetails,
-            rating
+            rating,
+            date,
+            time
         }
    
             fetch('http://localhost:5000/serviceReview',{
@@ -93,6 +98,7 @@ const ServiceDetails = () => {
                 if(data.acknowledged){
                     toastifyAlert()
                     event.target.reset()
+                    
                 }
             })
             .catch(error=>{
@@ -167,7 +173,7 @@ const ServiceDetails = () => {
                         /> 
                     </div>
 
-
+                {/* submit your review form */}
                     <form action="" onSubmit={handleSubmit}>
                             <input name='reviewerName' type="text" placeholder="Your Name" className="input input-bordered w-3/12" required />
                             <input name='reviewerEmail' type="text" placeholder="email" className="input input-bordered w-3/12" defaultValue={user?.email} required readOnly/>

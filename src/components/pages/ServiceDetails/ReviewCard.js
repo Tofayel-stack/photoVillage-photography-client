@@ -15,7 +15,6 @@ const ReviewCard = ({review}) => {
     // console.log(review)
     useEffect(()=>{
         AOS.init({
-            
             duration: 1000,
         })
     },[])
@@ -32,16 +31,24 @@ const ReviewCard = ({review}) => {
                     <div className="avatar">
                         <div className="w-8 rounded-full ring">
                         <img src="https://picsum.photos/200" alt='userpic'/>
+                        
                         </div>
+                        <span className='font-bold text-green-400 ml-4 mr-10'>{review.reviewerName}</span>
                     </div>
 
-                <span className='font-bold text-green-400 ml-4 mr-10'>{review.reviewerName}</span>
+              
+                    <div>
                         <p>
                             <BsStarFill className='inline'/>
                             <BsStarFill className='inline'/>
                             <BsStarHalf className='inline'/>
                             &nbsp; : {review.rating}
                         </p>
+
+                        
+                    </div> &nbsp;&nbsp;&nbsp;
+                    <span>date: <b className='text-yellow-600'>{review.date}</b></span> &nbsp; &nbsp;
+                    <span> at: <b className='text-yellow-500'>{review.time}</b></span>
             </div>
         </div>
     );

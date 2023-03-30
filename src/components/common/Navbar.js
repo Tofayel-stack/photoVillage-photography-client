@@ -43,7 +43,7 @@ const Navbar = () => {
                             </ul>
                     </div>
     
-                    <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-14' src={camLogo} alt="logo" srcset="" /> PhotoVillage</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-14' src={camLogo} alt="logo" srcSet='' /> PhotoVillage</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex ">
     

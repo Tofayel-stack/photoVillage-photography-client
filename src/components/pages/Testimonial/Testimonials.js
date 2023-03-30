@@ -22,31 +22,37 @@ import ClintCard from "./ClintCard";
 
 const reviewData = [
     {
+        id:1,
         img:clint1,
         review:'Photography is a powerful tool for capturing moments and telling stories. With the right equipment and skills, photographers can create stunning images',
         name:'Presley Baker'
     },
-    {
+    {   
+        id:2,
         img:clint2,
         review:'photography allows you to express your creativity and explore the world in a unique way. However, mastering the art of photography takes time and dedication,',
         name:'Margot Peterson'
     },
     {
+        id:3,
         img:clint3,
         review:'Therefore, he may not be the best person to provide a comprehensive review of photography. However, he has directed',
         name:'Jackson Sanders'
     },
     {
+        id:4,
         img:clint4,
         review:'At its core, photography is about capturing light and telling a story. A great photograph not only captures a moment in time, ',
         name:'Kayden Fortin'
     },
     {
+        id:5,
         img:clint5,
         review:'In short, photography is a powerful medium that has the ability to inspire, inform, and delight. Whether youre looking to capture a family portrait,',
         name:'Sophia     Ross'
     },
-    {
+    {   
+        id:6,
         img:clint6,
         review:'simply someone who enjoys taking photos, there are endless opportunities to explore and experiment with this medium. From landscapes to portraits,',
         name:'Charlie King'
@@ -87,7 +93,7 @@ const Testimonials = () => {
                         {
                         reviewData.map(clintSay => <SwiperSlide><ClintCard 
                             clintSays={clintSay}
-                            key={clintSay.name}
+                            key={clintSay.id}
                             >
                             </ClintCard></SwiperSlide> ) 
                         }

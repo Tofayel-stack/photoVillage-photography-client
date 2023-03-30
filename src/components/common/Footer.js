@@ -10,7 +10,7 @@ const Footer = () => {
         <footer className="footer m-auto p-10 bg-neutral text-neutral-content">
           
           <div>
-          <Link to='/#' className="btn btn-ghost normal-case text-xl text-red-700 font-extrabold text-2xl"><img className='w-14 rounded-full ' src={camLogo} alt="logo" srcset="" />&nbsp; &nbsp;  PhotoVillage</Link>
+          <Link to='/#' className="btn btn-ghost normal-case text-xl text-red-700 font-extrabold text-2xl"><img className='w-14 rounded-full ' src={camLogo} alt="logo" srcSet='' />&nbsp; &nbsp;  PhotoVillage</Link>
             <span className='text-slate-300 text-base text-start m-4 mb-8'>Subscribe to our newsletter for discounts <br/> and more latest offer.</span>
           <div className='flex content-center mb-8'>
           <input type="text" placeholder="Write Your Email" className="text-black input input-bordered input-accent max-w-xs rounded-r-none" /><button className="btn bg-red-700	rounded-l-none">Subscribe</button>

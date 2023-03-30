@@ -22,12 +22,16 @@ const MyReviewCard = ({review,handleDltReview,handleEditReview}) => {
                             </div>
 
                         <span className='font-bold text-green-400 ml-4 mr-10'>{review.reviewerName}</span>
-                                <p>
+                                <p> &nbsp;&nbsp;
                                     <BsStarFill className='inline'/>
                                     <BsStarFill className='inline'/>
                                     <BsStarHalf className='inline'/>
                                     &nbsp; : {review.rating}
                                 </p>
+
+                                &nbsp;&nbsp;
+                                <span>date: <b className='text-yellow-600'>{review.date}</b></span> &nbsp; &nbsp;
+                                <span> at: <b className='text-yellow-500'>{review.time}</b></span>
                    </div>
 
                    <div>
