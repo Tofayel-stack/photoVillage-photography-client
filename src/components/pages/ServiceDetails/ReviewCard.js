@@ -12,6 +12,16 @@ import { BsStarHalf } from 'react-icons/bs';
 
 
 const ReviewCard = ({review}) => {
+
+
+
+    // get time and convert it and split  (&&) conditional . cs of data load delay
+    let date = review.myReviewTime && review.myReviewTime[0];  
+    let time = review.myReviewTime && review.myReviewTime[1];
+
+
+
+
     // console.log(review)
     useEffect(()=>{
         AOS.init({
@@ -47,8 +57,8 @@ const ReviewCard = ({review}) => {
 
                         
                     </div> &nbsp;&nbsp;&nbsp;
-                    <span>date: <b className='text-yellow-600'>{review.date}</b></span> &nbsp; &nbsp;
-                    <span> at: <b className='text-yellow-500'>{review.time}</b></span>
+                    <span>date: <b className='text-yellow-600'>{date}</b></span> &nbsp; &nbsp;
+                    <span> at: <b className='text-yellow-500'>{time}</b></span>
             </div>
         </div>
     );

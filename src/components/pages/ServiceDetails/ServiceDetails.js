@@ -69,8 +69,9 @@ const ServiceDetails = () => {
         event.preventDefault()
 
 
-        let date = new Date().toLocaleDateString();
-        let time = new Date().toLocaleTimeString();
+        let reviewDate = new Date().toLocaleString();
+        let myReviewTime = reviewDate.split(',')  //default date process per needed
+        
         const reviewerName = event.target.reviewerName.value;
         const reviewTitle = event.target.reviewTitle.value;
         const reviewerEmail = event.target.reviewerEmail.value;
@@ -83,8 +84,7 @@ const ServiceDetails = () => {
             reviewTitle,
             reviewDetails,
             rating,
-            date,
-            time
+            myReviewTime
         }
    
             fetch('http://localhost:5000/serviceReview',{
@@ -142,11 +142,18 @@ const ServiceDetails = () => {
                 {/* show review here */}
                 <h1 className='text-xl mt-12 text-orange-400 bg-gradient-to-r from-gray-400 via-zinc-500 to-gray-400'>People says about our services</h1>
                 {
-                    reviews?.map( review => <ReviewCard
+                    reviews?.map( review => 
+                    // short object 
+                      
+                    <ReviewCard
                         review = {review}
                         key = {review._id}
                     >  
                     </ReviewCard>
+
+
+
+
                     )
                 }
                
@@ -185,7 +192,24 @@ const ServiceDetails = () => {
 
                             <div className='text-right'>
                             <p onClick={handleCancelBtn} className=' btn bg-white text-black mr-4'>Clear</p>
-                            <button value='submit' className='btn'>Submit</button>
+
+
+                            {
+
+                                // conditional button depending on user
+
+                                    user?.email? 
+                                    <button value='submit' className='btn'>Submit</button> 
+                                     :
+                                    <>
+                                    
+                                    <button value='submit' className='btn' disabled>Submit</button>
+                                    <p className='text-zinc-400'>please SingIn first</p>
+                                    </>
+                            }
+                            
+
+
                             </div>
                     </form>
                 </div>

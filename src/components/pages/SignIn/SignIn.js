@@ -4,7 +4,7 @@ import signInLogo from '../../../Assets/login.png'
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { FaFacebook } from 'react-icons/fa';
 import { AiOutlineGithub } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contextAPI/Context';
 
@@ -27,8 +27,17 @@ const SignIn = () => {
     const authData = useContext(AuthContext)
     const {loginWithGoogle,loginByEmailandPass} = authData;
 
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/' ;
+
+
+    const navigate = useNavigate()
+
+
+
       // toast
-      const toastifyAlert = () => toast("successfully registered",{
+      const toastifyAlert = () => toast("successfully loged in",{
         position: "top-center",
         autoClose: 1000,
         hideProgressBar: true,
@@ -45,10 +54,14 @@ const SignIn = () => {
         .then((result) => {
             const user = result.user;
             console.log(user)
-            toastifyAlert()
+            
+            navigate(from,{replace:true})
+         
+
           }).catch((error) => {
             console.error(error);
-          });
+          })
+          
     }
 
 
@@ -71,6 +84,9 @@ const SignIn = () => {
             console.log(user);
             form.reset()
             toastifyAlert()
+            navigate(from,{replace:true})
+          
+
           })
           .catch((error) => {
             const errorMessage = error.message;
@@ -90,7 +106,7 @@ const SignIn = () => {
     return (
        <div className='bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-400 flex justify-center items-center'>
             <div>
-                <div className='flex justify-center'><img className='w-48' src={signInLogo} alt="logoPic" srcset="" /></div>
+                <div className='flex justify-center'><img className='w-48' src={signInLogo} alt="logoPic" srcSet="" /></div>
                 <h1 className='text-white text-4xl'>Account Sign-In</h1>
                 <form onSubmit={handleSubmit}>
                     <input type="email" placeholder="email" name='userEmail' className="input w-full max-w-xs bg-orange-200 my-4"  /> <br />

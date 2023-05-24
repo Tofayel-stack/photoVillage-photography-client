@@ -12,6 +12,7 @@ import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/registresion/SignUp';
 import Error404 from '../component/Error404/Error404';
 import MyReview from '../pages/myReview/MyReview';
+import PrivateRoute from './PrivateRoute';
 
 
 const Routes = () => {
@@ -50,7 +51,7 @@ const Routes = () => {
               
                 {
                     path:'/myreview',
-                    element:<MyReview></MyReview>
+                    element:<PrivateRoute><MyReview></MyReview></PrivateRoute>
                     
                 },
               
@@ -68,7 +69,7 @@ const Routes = () => {
                 },
                 {
                     path:'/contact',
-                   element:<Contact></Contact>
+                   element:<PrivateRoute><Contact></Contact></PrivateRoute>
                 },
            
             ]

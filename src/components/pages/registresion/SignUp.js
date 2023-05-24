@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import signInLogo from '../../../Assets/login.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contextAPI/Context';
 
@@ -13,6 +13,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const SignUp = () => {
 
     const {createUserbyEmailandPass} = useContext(AuthContext)
+
+    const [error,setError] = useState()
+
+    const navigate = useNavigate()
 
         // toast
         const toastifyAlert = () => toast("successfully registered",{
@@ -42,11 +46,13 @@ const SignUp = () => {
             console.log(user);
             form.reset()
             toastifyAlert()
+            navigate('/')
             
           })
           .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
+            const  errorMessage = error.message;
+            setError(errorMessage)
             console.error(errorMessage , errorCode);
           });
 
@@ -67,6 +73,8 @@ const SignUp = () => {
                 <input title='coming soon' type="text" placeholder="Up your profile pic URL" name='proPic' className="input w-full max-w-xs bg-orange-200 mb-4"  readOnly/> <br />
                 <input type="email" placeholder="email" name='userEmail' className="input w-full max-w-xs bg-orange-200 mb-4"  /> <br />
                 <input type="password" placeholder="password" name='userPassword'  className="input w-full max-w-xs  bg-orange-200 mb-8" /> <br />
+
+                <p className='text-red-500'>{error}</p>
                 <a href="/" className='text-orange-700'> Forget password ?</a> <br />
                 <button className='btn bg-orange-900 w-80 mb-8'>Sign-Up</button>
 
