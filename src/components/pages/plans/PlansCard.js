@@ -19,7 +19,7 @@ const PlansCard = ({cardtext,setModalInfo}) => {
                 duration: 7000,
                 easing: 'linear',
             })
-        },[])
+        },[]) 
     
 
 // make the button fancy by modal
@@ -32,7 +32,7 @@ const PlansCard = ({cardtext,setModalInfo}) => {
 
     return (
         <div>
-               <div className="card rounded-none lg:mx-6 w-96 bg-stone-800 shadow-xl hover:translate-y-1.5 transition duration-500 hover:border-b-2 border-red-600" data-aos='fade-up'  data-aos-delay={cardtext.animationDelay}>
+               <div className="card rounded-none m-auto mb-4 lg:mb-0 lg:mx-6 w-96 bg-stone-800 shadow-xl hover:translate-y-1.5 transition duration-500 hover:border-b-2 border-red-600" data-aos='fade-up'  data-aos-delay={cardtext.animationDelay}>
                 
                 <div className="p-12 text-white text-start">
                     <h2 className="card-title mb-8">{cardtext.title}</h2>

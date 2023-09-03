@@ -28,7 +28,7 @@ const Navbar = () => {
                 <div className="navbar-start">
                     
                     <div className="dropdown text-red-800">
-                            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <label tabIndex={0} className=" btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </label>
                             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -38,12 +38,16 @@ const Navbar = () => {
                                 <li><Link to='/plans'>Plans</Link></li>
                                 <li><Link to='/blog'>Blog</Link></li>
                                 <li><Link to='/contact'>Contact</Link></li>
+
+                                {
+                                user && <li><Link to='/myreview' className='hover:underline underline-offset-4 hover:text-red-500'>My Review</Link></li>
+                            }
     
                             
                             </ul>
                     </div>
     
-                    <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-14' src={camLogo} alt="logo" srcSet='' /> PhotoVillage</Link>
+                    <Link to='/' className="btn btn-ghost normal-case lg:text-xl text-xs"><img className='lg:w-12  w-8' src={camLogo} alt="logo" srcSet='' />PhotoVillage</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex ">
     
@@ -60,7 +64,7 @@ const Navbar = () => {
                             <li><Link to='/contact' className='hover:underline underline-offset-4 hover:text-red-500'>Contact</Link></li>
 
                             {
-                                user? <li><Link to='/myreview' className='hover:underline underline-offset-4 hover:text-red-500'>My Review</Link></li> : ''
+                                user && <li><Link to='/myreview' className='hover:underline underline-offset-4 hover:text-red-500'>My Review</Link></li>
                             }
                         
     
@@ -81,7 +85,7 @@ const Navbar = () => {
                         <Link className='animate-pulse transition duration-150 cursor-pointer hover:underline underline-offset-4 hover:text-red-500 text-orange-500 text-xl' to='/signIn'>Sign In</Link>
                         
                     }
-                    <span> {user?.email}</span>
+                    <span className='hidden lg:inline'> {user?.email}</span>
                 </div>
     
                 </div>

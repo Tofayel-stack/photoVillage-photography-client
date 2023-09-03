@@ -68,7 +68,7 @@ const SignIn = () => {
 
 
 
-// login manualy by email  and pass 
+// login manually by email  and pass 
     const handleSubmit = event => {
         event.preventDefault()
         const form = event.target;
@@ -84,8 +84,31 @@ const SignIn = () => {
             console.log(user);
             form.reset()
             toastifyAlert()
-            navigate(from,{replace:true})
-          
+
+
+            //   get jwt token 
+            const currentUser = {email:user.email}
+
+            fetch('http://localhost:5000/jwt',{
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+
+                // set this data on local storage 
+                localStorage.setItem('JWT-token' , data.token )
+                console.log(data)
+                navigate(from,{replace:true})
+            })
+
+
+
+
+
 
           })
           .catch((error) => {
@@ -119,9 +142,9 @@ const SignIn = () => {
                 <span className='block text-white'>Or log in with</span><hr />
                     <div className='flex justify-center mb-8'>
                         
-                        <span onClick={handleGoogleLogin} className='p-3 bg-white rounded rounded-full text-orange-800 m-1'><AiOutlineGoogle></AiOutlineGoogle></span>
-                        <span className='p-3 bg-white rounded rounded-full text-orange-800 m-1'><FaFacebook></FaFacebook></span>
-                        <span className='p-3 bg-white rounded rounded-full text-orange-800 m-1'><AiOutlineGithub></AiOutlineGithub></span>
+                        <span onClick={handleGoogleLogin} className='p-3 bg-white  rounded-full text-orange-800 m-1'><AiOutlineGoogle></AiOutlineGoogle></span>
+                        <span className='p-3 bg-white  rounded-full text-orange-800 m-1'><FaFacebook></FaFacebook></span>
+                        <span className='p-3 bg-white  rounded-full text-orange-800 m-1'><AiOutlineGithub></AiOutlineGithub></span>
                     </div>
 
                 <span>Don't have Account? <Link to='/signup' className='text-orange-700 underline'>Sign Up</Link></span>

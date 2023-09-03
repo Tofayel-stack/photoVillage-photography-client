@@ -39,21 +39,20 @@ const MyReview = () => {
 
 // load review data based on user  email 
     useEffect(()=>{
-           
-            fetch(`http://localhost:5000/myreview/${user?.email}`)
+            fetch(`http://localhost:5000/myreview/${user?.email}`,{
+                headers:{
+                    authorization : `Bearer ${localStorage.getItem('JWT-token')}`
+                }
+            })
             .then(res=>res.json())
             .then(data =>
-                 setMyReview(data) ,
-                
+                 setMyReview(data)
                  ) 
-
-
-
     },[user?.email])
 
+console.log(myReview);
 
-
-    // delete oparation connected to mongodb
+    // delete operation connected to mongodb
 
     const handleDltReview =async (reviewID) => {
       const deleteConfirmed =await confirm("Please confirm deleting ...", options);
