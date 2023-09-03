@@ -53,7 +53,7 @@ const ServiceDetails = () => {
         // load previous review from databse to show in UI
         const [reviews,setReviews] = useState()
         useEffect(()=>{
-            fetch(`http://localhost:5000/serviceReview/${singleServiceDetailsData._id}`)
+            fetch(`https://photo-grapher-server.vercel.app/serviceReview/${singleServiceDetailsData._id}`)
             .then(res=> res.json())
             .then(data => setReviews(data))
         },[singleServiceDetailsData._id])
@@ -87,7 +87,7 @@ const ServiceDetails = () => {
             myReviewTime
         }
    
-            fetch('http://localhost:5000/serviceReview',{
+            fetch('https://photo-grapher-server.vercel.app/serviceReview',{
                 method:'POST',
                 headers:{"content-type":"application/json"},
                 body:JSON.stringify(reviewObj)

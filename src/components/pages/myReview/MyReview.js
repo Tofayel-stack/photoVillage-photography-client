@@ -39,7 +39,7 @@ const MyReview = () => {
 
 // load review data based on user  email 
     useEffect(()=>{
-            fetch(`http://localhost:5000/myreview/${user?.email}`,{
+            fetch(`https://photo-grapher-server.vercel.app/myreview/${user?.email}`,{
                 headers:{
                     authorization : `Bearer ${localStorage.getItem('JWT-token')}`
                 }
@@ -57,7 +57,7 @@ const MyReview = () => {
     const handleDltReview =async (reviewID) => {
       const deleteConfirmed =await confirm("Please confirm deleting ...", options);
       if (deleteConfirmed) {
-            fetch(`http://localhost:5000/myreview/${reviewID}`,{
+            fetch(`https://photo-grapher-server.vercel.app/myreview/${reviewID}`,{
                 method:'DELETE',
                 headers:{'Content-type':'application/json'}
             })

@@ -40,13 +40,13 @@ const Routes = () => {
                 {
                     path:'/service',
                    element:<Services></Services>,
-                   loader:()=>fetch('http://localhost:5000/services')
+                   loader:()=>fetch('https://photo-grapher-server.vercel.app/services')
 
                 },
                 {
                     path:'/servDetails/:id',
                    element:<ServiceDetails></ServiceDetails>,
-                   loader:({params})=>fetch(`http://localhost:5000/servDetails/${params.id}`)
+                   loader:({params})=>fetch(`https://photo-grapher-server.vercel.app/servDetails/${params.id}`)
                 },
               
                 {

@@ -9,7 +9,7 @@ import ServiceCard from './ServiceCard';
 const ServiceInHome = () => {
     const [services,setServices] = useState()
     useEffect(()=>{
-        fetch(`http://localhost:5000/limitService`)
+        fetch(`https://photo-grapher-server.vercel.app/limitService`)
         .then(res => res.json())
         .then(data => setServices(data))
            
