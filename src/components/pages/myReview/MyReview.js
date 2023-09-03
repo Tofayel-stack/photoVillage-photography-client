@@ -19,9 +19,9 @@ const options = {
 
 const MyReview = () => {
     const {user} = useContext(AuthContext)
-    const [myReview,setMyReview] = useState()
+    const [myReview,setMyReview] = useState([])
 
- 
+
     // toast
     const toastifyAlert = () => toast("successfully deleted",{
         position: "top-center",
@@ -50,7 +50,7 @@ const MyReview = () => {
                  ) 
     },[user?.email])
 
-console.log(myReview);
+// console.log(myReview);
 
     // delete operation connected to mongodb
 
@@ -78,6 +78,9 @@ console.log(myReview);
     }
 
 
+    if(myReview?.message === 'forbidden access'){
+        return <div className='text-2xl h-96 flex items-center'><marquee>Forbidden Access</marquee></div>
+    }
 
     if(myReview?.length === 0 ){
         return <div className='text-2xl h-96 flex items-center'><marquee>no review yet !!</marquee></div>

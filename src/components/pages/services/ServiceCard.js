@@ -33,7 +33,7 @@ const ServiceCard = ({serviceData}) => {
         <div>
 
           
-            <div className="card w-96 bg-base-100 shadow-xl m-4" data-aos="zoom-in"> 
+            <div className="card lg:w-96 w-full bg-base-100 shadow-xl lg:m-4 m-0" data-aos="zoom-in"> 
                 <figure className='h-72'>
                         <PhotoProvider 
                             speed={() => 800}

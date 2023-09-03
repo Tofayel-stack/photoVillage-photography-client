@@ -43,8 +43,8 @@ const Blog = () => {
         },
     ]
     return (
-       <div className='bg-gray-700 py-28 '>
-            <div className='container grid grid-cols-3 m-auto'>
+       <div className='bg-gray-700 lg:py-28 py-4'>
+            <div className='container grid grid-cols-1 lg:grid-cols-3 m-auto'>
                 {
                     blogPhotos.map(blogPhoto => <DetaisCard
                         key={blogPhoto.ques}

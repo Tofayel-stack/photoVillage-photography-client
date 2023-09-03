@@ -38,10 +38,10 @@ const Contact = () => {
 
 
 return (
-       <div className='py-28'>
+       <div className='lg:py-28'>
             <div className='lg:flex sm:block justify-center'>
-                    <div className='text-6xl text-neutral-400 m-auto '>Get in Touch !!</div>
-                    <div className='m-auto flex items-baseline relative'>
+                    <div className='lg:text-6xl text-neutral-400 m-auto '>Get in Touch !!</div>
+                    <div className='m-auto lg:flex  items-baseline relative'>
                         <img className='object-cover h-48 w-96 rounded-lg  border-8 border-white rounded-lg' src={contactModel} alt="pic" data-aos='fade-right'/>
                         <img className='w-48 rounded-lg' src={contactPhotographer} alt="pic" data-aos='fade-down' />
                     </div>
